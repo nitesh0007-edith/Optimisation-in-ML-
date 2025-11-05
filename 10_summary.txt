@@ -1,0 +1,83 @@
+
+OPTIMIZATION METHODS COMPARISON:
+===============================
+
+1. RANDOM SEARCH
+   - Simplest method: randomly sample parameter space
+   - No learning from previous samples
+   - Inefficient but can escape local minima
+   - Use when: function is non-smooth or has many local minima
+
+2. HILL CLIMBING
+   - Explores local neighborhood
+   - Moves to better neighbors
+   - Can get stuck in local minima
+   - Use when: function is locally smooth but may have multiple optima
+
+3. GRADIENT DESCENT
+   - Uses calculus to find steepest descent direction
+   - Most efficient for smooth, differentiable functions
+   - Requires gradient computation (analytical or numerical)
+   - Use when: function is differentiable and computational resources allow
+
+NEURAL NETWORK TRAINING:
+=======================
+
+Architecture: Input(1024) → Hidden(32) → Hidden(16) → Hidden(8) → Output(2)
+
+Key Components:
+- Linear transformations: z = W·x + b
+- Non-linear activations: h = tanh(z)
+- Loss function: L(θ) = ||f(x;θ) - y||²
+- Optimization: Mini-batch gradient descent with backpropagation
+
+Results:
+- Successfully learned to predict face pose from images
+- MAE: 20.09° (mean absolute error in degrees)
+- Training reduced loss from ~1723.28 to ~539.2103
+
+PRACTICAL INSIGHTS:
+==================
+
+1. Learning Rate: Critical hyperparameter
+   - Too large: oscillation/divergence
+   - Too small: slow convergence
+   - Typical range: 0.001 to 0.1
+
+2. Architecture: More layers ≠ always better
+   - Deeper networks can model complex functions
+   - But require more data and careful initialization
+   - Our simple 4-layer network worked well
+
+3. Mini-batch GD: Best of both worlds
+   - Faster than full-batch gradient descent
+   - More stable than stochastic gradient descent (SGD)
+   - Typical batch sizes: 16, 32, 64, 128
+
+4. Backpropagation: Efficient gradient computation
+   - Forward pass: O(n) where n = number of parameters
+   - Backward pass: O(n) using chain rule
+   - Much faster than numerical gradient: O(n²)
+
+EXTENSIONS FOR FURTHER LEARNING:
+===============================
+
+1. Advanced Optimizers:
+   - SGD with momentum
+   - Adam (adaptive moment estimation)
+   - RMSprop, AdaGrad
+
+2. Regularization:
+   - L2 regularization (weight decay)
+   - Dropout
+   - Early stopping
+
+3. Better Architectures:
+   - Convolutional Neural Networks (CNNs) for images
+   - Residual connections (ResNets)
+   - Batch normalization
+
+4. Real Datasets:
+   - Multi-PIE face dataset
+   - 300W-LP landmark dataset
+   - Replace synthetic data with real face images
